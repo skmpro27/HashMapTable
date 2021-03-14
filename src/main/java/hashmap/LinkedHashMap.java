@@ -48,4 +48,10 @@ public class LinkedHashMap<K,V> {
     public String toString() {
         return "LinkedHashMap List{" + bucketArray + '}';
     }
+
+    public void remove(K key) {
+        int index = this.getBucketIndex(key);
+        LinkedList<K> linkedList = this.bucketArray.get(index);
+        linkedList.searchDelete(key);
+    }
 }

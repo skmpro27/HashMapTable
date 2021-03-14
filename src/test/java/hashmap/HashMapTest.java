@@ -37,4 +37,23 @@ public class HashMapTest {
         System.out.println(linkedHashMap);
         Assert.assertEquals(3, frequency);
     }
+
+    @Test
+    public void givenParagraphRemoveWordTest() {
+        String paragraph = "Paranoids are not paranoid because " +
+                "they are paranoid but because they keep putting " +
+                "themselves deliberately into paranoid avoidable situations";
+        LinkedHashMap<String, Integer> linkedHashMap = new LinkedHashMap<>();
+        String[] words = paragraph.toLowerCase().split(" ");
+        for (String word: words) {
+            Integer value = linkedHashMap.get(word);
+            if (value == null) value = 1;
+            else value = value + 1;
+            linkedHashMap.add(word, value);
+        }
+        System.out.println(linkedHashMap);
+        linkedHashMap.remove("avoidable");
+        System.out.println(linkedHashMap);
+        Assert.assertEquals(null, linkedHashMap.get("avoidable"));
+    }
 }
